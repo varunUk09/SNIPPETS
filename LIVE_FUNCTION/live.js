@@ -27,11 +27,12 @@ function live(selector, event, callback, context) {
             var found,
                 el = e.target || e.srcElement;
             while (el && el.matches && el !== context && !(found = el.matches(selector))) el = el.parentElement;
-            if (found) callback.call(el, e);
+            if (el && found) callback.call(el, e);
         });
     }
     live(selector, event, callback, context);
 }
+
 
 live('selector', 'event', function() {
     // do your task
